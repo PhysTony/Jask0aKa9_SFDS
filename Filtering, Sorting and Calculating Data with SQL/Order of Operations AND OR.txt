@@ -1,0 +1,8 @@
+Can contain AND and OR operators
+
+SQL processes AND before OP
+
+Use()
+
+Don't rely on the default order of operations. You are better being specific and
+getting in the habit of using the ().

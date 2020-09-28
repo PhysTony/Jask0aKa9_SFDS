@@ -1,0 +1,80 @@
+Concatenations
+Link two stings
+Note: SQL server supports + instead of ||
+
+SELECT
+CompanyName
+,ContactName
+,CompanyName || ' ('|| ContactName||')'
+
+Outout;
+CompanyName             ContactName     CompanyName||' ('CompanyName||')'
+Alfredo Futterkiste     Maria Anders    Alfredo Futterkiste (Maria Anders)
+
+
+Trimming Strings
+Trims off the leading or trailing space from a atring:
+- TRIM: From both sides, left and right.
+- RTRIM: From right side.
+- LTRIM: From left side.
+
+TRIM
+Query:
+SELECT TRIM('     SQL Tutorial!     ') AS TrimmedString;
+Outout:
+
+TrimmedString
+SQL Tutorial!
+
+RTRIM
+Query:
+SELECT RTRIM('SQL Tutorial    ') AS RightTrimmedString;
+Outout:
+RightTrimmedString
+SQL Tutorial
+
+RTRIM
+Query:
+SELECT LTRIM('     SQL Tutorial') AS LeftTrimmedString;
+Outout:
+LeftTrimmedString
+SQL Tutorial
+
+
+Substring
+Returns the specified nimber of characters from a particular position of a given
+string.
+Note: SUBSTR or SIBSTRING
+
+SUBSTR(string_name, string position, characters to be returned);
+
+SELECT first_name, SUBSTR
+(first_name,2,3)
+FROM employees
+WHERE department_id=60;
+
+SELECT SUBSTRING('SQL Tutorial', 1, 3) AS ExtractString;
+Outout:
+ExtractString
+SQL
+
+
+Upper and Lower
+
+UPPER
+SELECT UPPER("SQL Tutorial is FUN!") AS UppercaseText;
+Outout:
+UppercaseText
+SQL TUTORIAL IS FUN!
+
+UCASE
+SELECT UCASE("SQL Tutorial is FUN!") AS UppercaseText;
+Outout:
+UppercaseText
+SQL TUTORIAL IS FUN!
+
+LOWER 
+SELECT LOWER("SQL Tutorial is FUN!") AS LowercaseText;
+Outout:
+LowercaseText
+sql tutorial is fun!

@@ -1,0 +1,5 @@
+SELECT ProductName
+,UnitPrice
+,SupplierID
+FROM Products
+WHERE ProductName <> 'Alice Mutton';

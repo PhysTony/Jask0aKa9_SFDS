@@ -1,0 +1,11 @@
+These produce the same results
+
+WHERE size LIKE '_pizza'
+	Output:
+	spizza
+	mpizza
+	
+WHERE size LIKE '%pizza'
+	Output:
+	spizza
+	mpizza

@@ -1,0 +1,40 @@
+Best Practices with Subqueries
+- There is no limit to the number of subqueries you can have
+- Performance slows when you nest too deeply.
+- Subquery selects can only retrieve a single columnm.
+
+Subquery in Subquery
+1.Order numbers for toothbrushes.
+2. Customer ID's for those orders.
+3. Customer information for those orders.
+
+SELECT Customer_name, Customer_contact
+FROM Customers
+WHERE cust_id IN
+	SELECT customer_id
+	FROM Orders
+	WHERE order_number IN(SELECT order_number
+		FROM OrderItems
+		WHERE prod_name = 'Toothbrush');
+		
+PoorSQL Website
+- www.poorsql.com (To write legitible and readable queries)
+- Website will pre-format code.
+- Uses proper indenting.
+- Code is easier to read and troubleshoot.
+
+Subqueries for Calculations
+Total number of orders placed by every customer
+
+SELECT COUNT (*) AS orders
+FROM Orders
+WHERE customer_id = '143569';
+
+SELECT customer_name
+	,customer_state
+	(SELECT COUNT (*) AS orders
+	FROM Orders
+	WHERE Oriders.customer_id = 
+Customer.customer_id) AS orders
+FROM customers
+ORDER BY Customer_name

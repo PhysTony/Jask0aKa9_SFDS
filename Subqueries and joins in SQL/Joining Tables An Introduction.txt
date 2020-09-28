@@ -1,0 +1,11 @@
+Benefits of Breaking Data into Tables
+- Efficient storage.
+- Easier manipulation.
+- Greater scalability.
+- Logically models a process.
+- Tables are related through common values (keys)
+
+Joins
+- Associate correct records from each table on the fly.
+- Allows data retrieval from multiple tables in one query.
+- Joins are not physical - they persist for the duration of the query execution.

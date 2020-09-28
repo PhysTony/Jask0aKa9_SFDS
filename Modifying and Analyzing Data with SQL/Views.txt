@@ -1,0 +1,43 @@
+Overview of Views
+- A stored query.
+- Can add or remove columns without changing schema.
+- Use it to encapsule queries.
+- The view will be removed after database connection has ended.
+
+CREATE [TEMP] VIEW [IF NOT EXISTS]
+view_name(column-name-list)
+AS
+select-statement;
+
+
+Creating a View
+
+CREATE VIEW my_view
+AS
+SELECT
+r.regiondescription
+,t.territorydescription
+,e.Lastname
+,e.Firstname
+,e.Hiredate
+,e.Reportsto
+FROM Region r
+INNER JOIN Territories t on r.regionid = t.regionid
+INNER JOIN Employeeterritories  et on t.TerritoryID = et.TerritoryID
+INNER JOIN Employees e on et.employeeid = e.EmployeeID
+
+
+To call the view:
+SELECT *
+FROM my_view
+DROP VIEW my_view;
+
+
+Why Use Views
+Get a count of how many territories each employee has
+
+SELECT count(territorydescription)
+,Lastname
+,Firstname
+FROM my_view
+GROUP BY Lastname, Firstname

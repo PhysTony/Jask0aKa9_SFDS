@@ -1,0 +1,34 @@
+STRFTIME Function
+
+STRFTIME it is used to extract certain elements of a date/stime string.
+
+SELECT Birthdate
+,STRFTIME('%Y', Birthdate) AS Year
+,STRFTIME('%m', Birthdate) AS Month
+,STRFTIME('%d', Birthdate) AS Day
+FROM employees
+
+Output:
+Birthdate              Year    Month    Day
+1962-02-18 00:00:00    1962    02       18
+
+
+Compute Current Date
+SELECT DATE('now')
+
+
+Compute Year, Month and Day fot the Current Date
+SELECT STRFTIME('%Y %m %d','now')
+
+
+Compute the Hour, Minute and Second and Milliseconds from Current DATETIME
+SELECT STRFTIME('%H %M %S %s','now')
+
+
+Compute Age Using Birthdate
+SELECT Birthdate
+,STRFTIME('%Y', Birthdate) AS Year
+,STRFTIME('%m', Birthdate) AS Month
+,STRFTIME('%d', Birthdate) AS Day
+,DATE(('now') - Birthdate) AS Age
+FROM employees

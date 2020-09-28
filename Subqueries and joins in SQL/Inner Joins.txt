@@ -1,0 +1,31 @@
+What Is an Inner Join
+The INNER JOIN keyword selects records that have matching values in both tables.
+
+Inner Join Example
+SELECT suppliers.CompanyName
+,ProductName
+,UnitPrice
+FROM Suppliers INNER JOIN Products
+ON Suppliers.supplierid = 
+Products.supplierid
+
+Inner Join Syntax
+- Join type is specified (INNER JOIN).
+- Join condition is in the FROM clause and uses the ON clause.
+- Joining more tables together affects overall database perfomance.
+- You can join multiple tables, no limit.
+- List all the tables, then define conditions.
+
+Inner Joins With Multiple Tables
+SELECT o.OrderID, c.CompanyName,
+e.LastName
+FROM ((Orders o INNER JOIN Customers c ON
+o.CustomerID = c.CustomerID)
+INNER JOIN Employees e ON o.EmployeeID =
+e.EmployeeID);
+
+Best Practices With Joins
+- Make sure you are pre-qualifying names.
+- Do not make unnecessaryjoins.
+- Think about the type of join you are making.
+- How are you connecting records?

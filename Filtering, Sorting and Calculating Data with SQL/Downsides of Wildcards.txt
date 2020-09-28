@@ -1,0 +1,9 @@
+Takes longer to run
+
+Better to use another operator (if possible):
+=, <, =>, and etc.
+
+Statements with wildcards will take longer to run if used at the
+end of search patterns.
+
+Placement of wildcards is important.

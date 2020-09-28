@@ -1,0 +1,194 @@
+1. Pull a list of customer ids with the customer’s full name, and address, along
+with combining their city and country together. Be sure to make a space in between
+these two and make it UPPER CASE. (e.g. LOS ANGELES USA)
+
+SELECT CustomerId,
+FirstName || ' ' || LastName AS FullName,
+UPPER(City || ' ' || Country) AS Address
+FROM Customers
+
++------------+-----------------------+----------------------------+
+| CustomerId | FullName              | Address                    |
++------------+-----------------------+----------------------------+
+|          1 | Luís Gonçalves        | SãO JOSé DOS CAMPOS BRAZIL |
+|          2 | Leonie Köhler         | STUTTGART GERMANY          |
+|          3 | François Tremblay     | MONTRéAL CANADA            |
+|          4 | Bjørn Hansen          | OSLO NORWAY                |
+|          5 | František Wichterlová | PRAGUE CZECH REPUBLIC      |
+|          6 | Helena Holý           | PRAGUE CZECH REPUBLIC      |
+|          7 | Astrid Gruber         | VIENNE AUSTRIA             |
+|          8 | Daan Peeters          | BRUSSELS BELGIUM           |
+|          9 | Kara Nielsen          | COPENHAGEN DENMARK         |
+|         10 | Eduardo Martins       | SãO PAULO BRAZIL           |
+|         11 | Alexandre Rocha       | SãO PAULO BRAZIL           |
+|         12 | Roberto Almeida       | RIO DE JANEIRO BRAZIL      |
+|         13 | Fernanda Ramos        | BRASíLIA BRAZIL            |
+|         14 | Mark Philips          | EDMONTON CANADA            |
+|         15 | Jennifer Peterson     | VANCOUVER CANADA           |
+|         16 | Frank Harris          | MOUNTAIN VIEW USA          |
+|         17 | Jack Smith            | REDMOND USA                |
+|         18 | Michelle Brooks       | NEW YORK USA               |
+|         19 | Tim Goyer             | CUPERTINO USA              |
+|         20 | Dan Miller            | MOUNTAIN VIEW USA          |
+|         21 | Kathy Chase           | RENO USA                   |
+|         22 | Heather Leacock       | ORLANDO USA                |
+|         23 | John Gordon           | BOSTON USA                 |
+|         24 | Frank Ralston         | CHICAGO USA                |
+|         25 | Victor Stevens        | MADISON USA                |
++------------+-----------------------+----------------------------+
+(Output limit exceeded, 25 of 59 total rows shown)
+
+What is the city and country result for CustomerID 16?
+MOUNTAIN VIEW USA 
+ 
+ 
+2. Create a new employee user id by combining the first 4 letters of the emplo-
+yee’s first name with the first 2 letters of the employee’s last name. Make the 
+new field lower case and pull each individual step to show your work.
+
+SELECT FirstName || ' ' || LastName AS FullName,
+LOWER(SUBSTR(FirstName, 1, 4) || SUBSTR(LastName, 1, 2)) AS CustomerId
+FROM Customers
+
++------------+-----------------------+----------------------------+
+| CustomerId | FullName              | Address                    |
++------------+-----------------------+----------------------------+
+|          1 | Luís Gonçalves        | SãO JOSé DOS CAMPOS BRAZIL |
+|          2 | Leonie Köhler         | STUTTGART GERMANY          |
+|          3 | François Tremblay     | MONTRéAL CANADA            |
+|          4 | Bjørn Hansen          | OSLO NORWAY                |
+|          5 | František Wichterlová | PRAGUE CZECH REPUBLIC      |
+|          6 | Helena Holý           | PRAGUE CZECH REPUBLIC      |
+|          7 | Astrid Gruber         | VIENNE AUSTRIA             |
+|          8 | Daan Peeters          | BRUSSELS BELGIUM           |
+|          9 | Kara Nielsen          | COPENHAGEN DENMARK         |
+|         10 | Eduardo Martins       | SãO PAULO BRAZIL           |
+|         11 | Alexandre Rocha       | SãO PAULO BRAZIL           |
+|         12 | Roberto Almeida       | RIO DE JANEIRO BRAZIL      |
+|         13 | Fernanda Ramos        | BRASíLIA BRAZIL            |
+|         14 | Mark Philips          | EDMONTON CANADA            |
+|         15 | Jennifer Peterson     | VANCOUVER CANADA           |
+|         16 | Frank Harris          | MOUNTAIN VIEW USA          |
+|         17 | Jack Smith            | REDMOND USA                |
+|         18 | Michelle Brooks       | NEW YORK USA               |
+|         19 | Tim Goyer             | CUPERTINO USA              |
+|         20 | Dan Miller            | MOUNTAIN VIEW USA          |
+|         21 | Kathy Chase           | RENO USA                   |
+|         22 | Heather Leacock       | ORLANDO USA                |
+|         23 | John Gordon           | BOSTON USA                 |
+|         24 | Frank Ralston         | CHICAGO USA                |
+|         25 | Victor Stevens        | MADISON USA                |
++------------+-----------------------+----------------------------+
+(Output limit exceeded, 25 of 59 total rows shown)
+
+What is the final result for Robert King?
+robeki
+
+
+3. Show a list of employees who have worked for the company for 15 or more years
+using the current date function. Sort by lastname ascending.
+
+SELECT EmployeeId
+,FirstName || ' ' || LastName AS FullName
+,STRFTIME('%Y','now') - STRFTIME('%Y', HireDate) AS Time_in_Company
+FROM Employees
+WHERE Time_in_Company >= 15
+ORDER BY LastName ASC
+
++------------+------------------+-----------------+
+| EmployeeId | FullName         | Time_in_Company |
++------------+------------------+-----------------+
+|          1 | Andrew Adams     |              18 |
+|          8 | Laura Callahan   |              16 |
+|          2 | Nancy Edwards    |              18 |
+|          5 | Steve Johnson    |              17 |
+|          7 | Robert King      |              16 |
+|          6 | Michael Mitchell |              17 |
+|          4 | Margaret Park    |              17 |
+|          3 | Jane Peacock     |              18 |
++------------+------------------+-----------------+
+
+What is the lastname of the last person on the list returned?
+Peacock
+
+
+4. Profiling the Customers table, answer the following question.
+
+SELECT COUNT (CustomerId) - COUNT(FirstName) AS FirstName
+,COUNT (CustomerId) - COUNT(LastName) AS LastName
+,COUNT (CustomerId) - COUNT(Company) AS Company
+,COUNT (CustomerId) - COUNT(Address) AS Address
+,COUNT (CustomerId) - COUNT(City) AS City
+,COUNT (CustomerId) - COUNT(State) AS State
+,COUNT (CustomerId) - COUNT(Country) AS Country
+,COUNT (CustomerId) - COUNT(PostalCode) AS PostalCode
+,COUNT (CustomerId) - COUNT(Phone) AS Phone
+,COUNT (CustomerId) - COUNT(Fax) AS Fax
+,COUNT (CustomerId) - COUNT(Email) AS Email
+,COUNT (CustomerId) - COUNT(SupportRepId) AS SupportRepId
+FROM Customers
+
++-----------+----------+---------+---------+------+-------+---------+------------+-------+-----+-------+--------------+
+| FirstName | LastName | Company | Address | City | State | Country | PostalCode | Phone | Fax | Email | SupportRepId |
++-----------+----------+---------+---------+------+-------+---------+------------+-------+-----+-------+--------------+
+|         0 |        0 |      49 |       0 |    0 |    29 |       0 |          4 |     1 |  47 |     0 |            0 |
++-----------+----------+---------+---------+------+-------+---------+------------+-------+-----+-------+--------------+
+
+Are there any columns with null values? Indicate any below. Select all that apply.
+- Fax
+- Company
+- Phone
+- PostalCode
+
+
+5. Find the cities with the most customers and rank in descending order.
+
+SELECT City, SupportRepId, COUNT(CustomerId)
+FROM Customers
+GROUP BY  City
+HAVING COUNT(CustomerId) >= 2
+ORDER BY City DESC, SupportRepId DESC
+
++---------------+--------------+-------------------+
+| City          | SupportRepId | COUNT(CustomerId) |
++---------------+--------------+-------------------+
+| São Paulo     |            5 |                 2 |
+| Prague        |            5 |                 2 |
+| Paris         |            4 |                 2 |
+| Mountain View |            4 |                 2 |
+| London        |            3 |                 2 |
+| Berlin        |            3 |                 2 |
++---------------+--------------+-------------------+
+
+Which of the following cities indicate having 2 customers?
+- São Paulo
+- London
+- Mountain View
+
+6. Create a new customer invoice id by combining a customer’s invoice id with
+their first and last name while ordering your query in the following order: 
+firstname, lastname, and invoiceID.
+
+SELECT C.FirstName || C.LastName || I.InvoiceId AS New_InvoiceId
+FROM Invoices I
+INNER JOIN Customers C
+ON C.CustomerId = I.CustomerId
+WHERE New_InvoiceId LIKE 'AstridGruber%'
+
++-----------------+
+| New_InvoiceId   |
++-----------------+
+| AstridGruber78  |
+| AstridGruber89  |
+| AstridGruber144 |
+| AstridGruber273 |
+| AstridGruber296 |
+| AstridGruber318 |
+| AstridGruber370 |
++-----------------+
+
+Select all of the correct "AstridGruber" entries that are returned in your
+results below. Select all that apply.
+- AstridGruber273
+- AstridGruber296
+- AstridGruber370

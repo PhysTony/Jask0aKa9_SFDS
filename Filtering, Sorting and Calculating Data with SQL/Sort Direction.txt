@@ -1,0 +1,4 @@
+DESC descending order
+ASC ascending order
+
+Only applies to the column names it directly precedes

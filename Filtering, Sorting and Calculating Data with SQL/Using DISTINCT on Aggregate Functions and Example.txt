@@ -1,0 +1,8 @@
+id DISTINCT is not specified, ALL is assumed
+
+Cannot use DISTINCT on COUNT(*)
+
+No value to use with MIN and MAX functions
+
+SELECT COUNT(DISTINCT CustomerID)
+FROM Customers

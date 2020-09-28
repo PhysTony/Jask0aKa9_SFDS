@@ -1,0 +1,158 @@
+1. Query
+/*
+Must be non-comment the table we want to examine in order to not crash the system
+due to the large number of records.
+
+Use PK and FK because they not must contain NULL values.
+*/
+SELECT 
+	-- COUNT(BU.id)
+	-- COUNT(HO.business_id)
+	-- COUNT(CA.business_id)
+	-- COUNT(AT.business_id)
+	-- COUNT(RE.id)
+	-- COUNT(US.id)
+	-- COUNT(FR.user_id)
+	-- COUNT(EY.user_id)
+	-- COUNT(CH.business_id)
+	-- COUNT(PH.id)
+	-- COUNT(TI.user_id)
+FROM 
+	-- business BU
+	-- hours HO
+	-- category CA
+	-- attribute AT
+	-- review RE
+	-- user US
+	-- friend FR
+	-- elite_years EY
+	-- checkin CH
+	-- photo PH
+	-- tip TI
+
+Results:
+business = 10000 
+hours = 10000 
+category = 10000
+attribute = 10000 
+review = 10000 
+user = 10000 
+friend = 10000 
+elite_years = 10000 
+checkin = 10000 
+photo = 10000 
+tip = 10000 
+
+
+2. Query:
+/*
+The same logic used in 1
+*/
+
+SELECT 
+	-- COUNT(DISTINCT BU.id)
+	-- COUNT(DISTINCT HO.business_id)
+	-- COUNT(DISTINCT CA.business_id)
+	-- COUNT(DISTINCT AT.business_id)
+	-- COUNT(DISTINCT RE.id)
+	-- COUNT(DISTINCT US.id)
+	-- COUNT(DISTINCT FR.user_id)
+	-- COUNT(DISTINCT EY.user_id)
+	-- COUNT(DISTINCT CH.business_id)
+	-- COUNT(DISTINCT PH.id)
+	-- COUNT(DISTINCT TI.user_id)
+FROM 
+	-- business BU
+	-- hours HO
+	-- category CA
+	-- attribute AT
+	-- review RE
+	-- user US
+	-- friend FR
+	-- elite_years EY
+	-- checkin CH
+	-- photo PH
+	-- tip TI
+
+Results:
+business = 10000 
+hours = 1562
+category = 2643
+attribute = 1115 
+review = 10000 
+user = 10000 
+friend = 11 
+elite_years = 2780 
+checkin = 493 
+photo = 10000 
+tip = 537
+
+
+3.
+/*
+Use primary or foreign keys as guidline to count NULL values since PK and FK
+do not contain NULL values.
+Since COUNT does not take on count NULL values, ii's useful for this task.
+*/
+SELECT 
+	COUNT(id) - COUNT(name) AS name
+	,COUNT(id) - COUNT(review_count) AS review_count
+	,COUNT(id) - COUNT(yelping_since) AS yelping_since
+	,COUNT(id) - COUNT(useful) AS useful
+	,COUNT(id) - COUNT(funny) AS funny
+	,COUNT(id) - COUNT(cool) AS cool
+	,COUNT(id) - COUNT(fans) AS fans
+	,COUNT(id) - COUNT(average_stars) AS average_stars
+	,COUNT(id) - COUNT(compliment_hot) AS compliment_hot
+	,COUNT(id) - COUNT(compliment_more) AS compliment_more
+	,COUNT(id) - COUNT(compliment_profile) AS compliment_profile
+	,COUNT(id) - COUNT(compliment_cute) AS compliment_cute
+	,COUNT(id) - COUNT(compliment_list) AS compliment_list
+	,COUNT(id) - COUNT(compliment_note) AS compliment_note
+	,COUNT(id) - COUNT(compliment_plain) AS compliment_plain
+	,COUNT(id) - COUNT(compliment_cool) AS compliment_cool
+	,COUNT(id) - COUNT(compliment_funny) AS compliment_funny
+	,COUNT(id) - COUNT(compliment_writer) AS compliment_writer
+	,COUNT(id) - COUNT(compliment_photos) AS compliment_photos
+FROM 
+	user
+
+
+4. The queries are in order according to tables asked
+
+SELECT 
+	MIN(stars) AS MIN
+	,MAX(stars) AS MAX
+	,AVG(stars) AS AVG
+FROM 
+	review
+
+SELECT 
+	MIN(stars) AS MIN
+	,MAX(stars) AS MAX
+	,AVG(stars) AS AVG
+FROM 
+	business
+
+SELECT 
+	MIN(likes) AS MIN
+	,MAX(likes) AS MAX
+	,AVG(likes) AS AVG
+FROM 
+	tip
+
+SELECT 
+	MIN(count) AS MIN
+	,MAX(count) AS MAX
+	,AVG(count) AS AVG
+FROM 
+	checkin
+
+SELECT 
+	MIN(review_count) AS MIN
+	,MAX(review_count) AS MAX
+	,AVG(review_count) AS AVG
+FROM 
+	user
+
+

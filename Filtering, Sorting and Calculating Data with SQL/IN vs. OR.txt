@@ -1,0 +1,9 @@
+IN vs. OR
+
+In works the same as OR
+
+Benefits of IN:
+- Long list of options.
+- IN executes daster than OR.
+- Don't have to think about the order with IN.
+- Can contain another SELECT.

@@ -1,0 +1,7 @@
+GROUP BY clauses can contain multiple columns
+
+Every column in your SELECT statement must be present in a
+GROUP BY clause, except for aggregated calculations.
+
+NULLs will be grouped together if your GROUP BY column con-
+tains NULLs.

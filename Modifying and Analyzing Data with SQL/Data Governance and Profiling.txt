@@ -1,0 +1,31 @@
+What is Data Profiling?
+Looking at descriptive statistics or object data information -examining data for
+completeness and accuracy
+
+Why?
+Important to understand your data before you query it.
+
+Which one of the following is a general definition of  data profiling?
+- Looking at either descriptive statistics or different information on the data.
+
+
+Object Data Profile
+Check:
+- Number of rows.
+- Table size.
+- When the object was last updated.
+
+
+Column Data Profile
+Check:
+- Column data type.
+- Number of distinct values.
+- Number of rows with NULL values.
+- Descriptive statistics: maximum, average and standard deviation for column
+values.
+
+
+Governance Best Practices
+- Understand your read and write capabilities.
+- Clean up your environments.
+- Understand your promotion process.

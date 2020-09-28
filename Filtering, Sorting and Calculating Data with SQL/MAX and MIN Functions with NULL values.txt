@@ -1,0 +1,1 @@
+NULL values are ignored by the MIN and MAX functions.

@@ -1,0 +1,17 @@
+What Is a Cartesian (Cross) Join?
+CROSS JOINs: each row from the first table joins with all the rows of another
+table.
+
+Cartesian (Cross) Join Example
+Output willl be the number of joins in the 1st table multiplied by the number of
+rows in the 2nd table.
+
+SELECT product_name
+,unit_price
+,company_name
+FROM suppliers CROSS JOIN products;
+
+Cartesian (Cross) Joins
+- Not frequently used.
+- Computationally taxing.
+- Will return products with the incorrect vendor or no vendor at all.

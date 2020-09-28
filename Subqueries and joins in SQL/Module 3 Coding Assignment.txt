@@ -1,0 +1,189 @@
+Using a subquery, find the names of all the tracks for the album
+"Californication".
+
+SELECT T.TrackId, T.Name
+FROM Tracks T
+INNER JOIN Albums A ON A.AlbumId = T.AlbumId
+WHERE A.Title = 'Californication'
+
++---------+-------------------+
+| TrackId | Name              |
++---------+-------------------+
+|    2391 | Around The World  |
+|    2392 | Parallel Universe |
+|    2393 | Scar Tissue       |
+|    2394 | Otherside         |
+|    2395 | Get On Top        |
+|    2396 | Californication   |
+|    2397 | Easily            |
+|    2398 | Porcelain         |
+|    2399 | Emit Remmus       |
+|    2400 | I Like Dirt       |
++---------+-------------------+
+(Output limit exceeded, 10 of 15 total rows shown)
+
+What is the title of the 8th track?
+
+Porcelain
+
+
+2. Find the total number of invoices for each customer along with the custo-
+mer's full name, city and email.
+
+SELECT COUNT(I.CustomerId), C.FirstName, C.LastName, C.City, C.Email
+FROM Invoices I
+JOIN Customers C ON C.CustomerID = I.CustomerID 
+GROUP BY I.CustomerId
+
++---------------------+-----------+-------------+---------------------+--------------------------+
+| COUNT(I.CustomerId) | FirstName | LastName    | City                | Email                    |
++---------------------+-----------+-------------+---------------------+--------------------------+
+|                   7 | Luís      | Gonçalves   | São José dos Campos | luisg@embraer.com.br     |
+|                   7 | Leonie    | Köhler      | Stuttgart           | leonekohler@surfeu.de    |
+|                   7 | François  | Tremblay    | Montréal            | ftremblay@gmail.com      |
+|                   7 | Bjørn     | Hansen      | Oslo                | bjorn.hansen@yahoo.no    |
+|                   7 | František | Wichterlová | Prague              | frantisekw@jetbrains.com |
+|                   7 | Helena    | Holý        | Prague              | hholy@gmail.com          |
+|                   7 | Astrid    | Gruber      | Vienne              | astrid.gruber@apple.at   |
+|                   7 | Daan      | Peeters     | Brussels            | daan_peeters@apple.be    |
+|                   7 | Kara      | Nielsen     | Copenhagen          | kara.nielsen@jubii.dk    |
+|                   7 | Eduardo   | Martins     | São Paulo           | eduardo@woodstock.com.br |
++---------------------+-----------+-------------+---------------------+--------------------------+
+(Output limit exceeded, 10 of 59 total rows shown)
+
+After running the query described above, what is the email address of the 5th
+person, František Wichterlová? Enter the answer below (feel free to copy and
+paste).
+
+frantisekw@jetbrains.com
+
+
+3. Retrieve the track name, album, artistID, and trackID for all the albums.
+
+SELECT T.Name, A.Title, A.ArtistId, T.TrackId
+FROM Tracks T
+INNER JOIN Albums A ON A.AlbumId = T.AlbumId
+WHERE A.Title = 'For Those About To Rock We Salute You'
+AND
+T.TrackID = 12
+
++--------------------+---------------------------------------+----------+---------+
+| Name               | Title                                 | ArtistId | TrackId |
++--------------------+---------------------------------------+----------+---------+
+| Breaking The Rules | For Those About To Rock We Salute You |        1 |      12 |
++--------------------+---------------------------------------+----------+---------+
+
+What is the song title of trackID 12 from the "For Those About to Rock We Salu-
+te You" album? Enter the answer below.
+
+Breaking The Rules
+
+
+4. Retrieve a list with the managers last name, and the last name of the
+employees who report to him or her.
+
+SELECT 
+E1.LastName AS MLN
+,E1.FirstName AS MFN
+,E1.ReportsTo
+,E2.Title as E2Title
+,E2.LastName AS E2LN
+,E2.FirstName AS E2FN
+FROM Employees E1, Employees E2
+WHERE E1.ReportsTo = E2.EmployeeId
+AND
+E2.LastName = 'Mitchell'
+AND
+E2.Title LIKE '%Manager%'
+
++----------+--------+-----------+------------+----------+---------+
+| MLN      | MFN    | ReportsTo | E2Title    | E2LN     | E2FN    |
++----------+--------+-----------+------------+----------+---------+
+| King     | Robert |         6 | IT Manager | Mitchell | Michael |
+| Callahan | Laura  |         6 | IT Manager | Mitchell | Michael |
++----------+--------+-----------+------------+----------+---------+
+
+who are the reports for the manager named Mitchell (select all that apply)?
+Callahan
+
+King
+
+
+5. Find the name and ID of the artists who do not have albums.
+
+SELECT A.Name,A.ArtistId
+FROM Artists A
+WHERE A.ArtistId NOT IN(SELECT Al.ArtistId
+  FROM Albums Al)
+  
++----------------------------+----------+
+| Name                       | ArtistId |
++----------------------------+----------+
+| Milton Nascimento & Bebeto |       25 |
+| Azymuth                    |       26 |
+| João Gilberto              |       28 |
+| Bebel Gilberto             |       29 |
+| Jorge Vercilo              |       30 |
+| Baby Consuelo              |       31 |
+| Ney Matogrosso             |       32 |
+| Luiz Melodia               |       33 |
+| Nando Reis                 |       34 |
+| Pedro Luís & A Parede      |       35 |
++----------------------------+----------+
+(Output limit exceeded, 10 of 71 total rows shown)
+
+After running the query described above, two of the records returned have the
+same last name. Enter that name below.
+Gilberto
+
+
+6. Use a UNION to create a list of all the employee's and customer's first na-
+mes and last names ordered by the last name in descending order.
+
+SELECT C.FirstName,C.LastName FROM
+Customers C
+UNION
+SELECT E.FirstName,E.LastName FROM
+Employees E
+ORDER BY C.LastName DESC, C.FirstName DESC
+
++-------------+--------------+
+| C.FirstName | C.LastName   |
++-------------+--------------+
+| Fynn        | Zimmermann   |
+| Stanisław   | Wójcik       |
+| František   | Wichterlová  |
+| Johannes    | Van der Berg |
+| François    | Tremblay     |
+| Mark        | Taylor       |
+| Ellie       | Sullivan     |
+| Victor      | Stevens      |
+| Puja        | Srivastava   |
+| Jack        | Smith        |
++-------------+--------------+
+(Output limit exceeded, 10 of 67 total rows shown)
+
+After running the query described above, determine what is the last name of the
+6th record? Enter it below. Remember to order things in descending order to be
+sure to get the correct answer.
+
+Taylor
+
+
+7. See if there are any customers who have a different city listed in their
+billing city versus their customer city.
+
+SELECT C.FirstName, C.LastName
+FROM Customers C
+INNER JOIN Invoices I ON C.CustomerId = I.CustomerId
+WHERE C.City <> I.BillingCity
+
++-----------+----------+
+| FirstName | LastName |
++-----------+----------+
++-----------+----------+
+(Zero rows)
+
+Indicate your answer below.
+No customers have a different city listed in their billing city versus customer
+city.

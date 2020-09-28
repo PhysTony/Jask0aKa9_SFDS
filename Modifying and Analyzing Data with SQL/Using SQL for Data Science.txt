@@ -1,0 +1,76 @@
+Working Through a Problema from Beginning to END
+
+1. Data Understanding
+2. Business Understanding
+3. Profiling
+4. Start with SELECT
+5. Test
+6. Format & Comment
+7. Review
+
+
+1. Data Understanding
+- Most important step
+- Understanding relationships in your data
+- NULL values
+- String values
+- Dates and times
+
+
+2. Subject Area Understanding
+- Until you gain business inderstanding, writing queries may take more time
+- Understanding where data joins are
+- Differentiating integers from strings
+- Investing time to understand your subject will help you later during data analy-
+sis
+
+
+3. Business Understanding
+- Ask question about business problem you are solving
+- Hard to separate data and business
+
+Beware of the Unspoken Need;
+"We want to predict whether or not a customer is likely to buy our product."
+- Which customers?
+- What product?
+- What is/should be excluded?
+- What is/should be counted from past?
+
+Moving Between Data and Business Understanding:
+- **Note:** Data Understanding <---> Business Understanding
+The vital importance of going back and forth between two essential things.
+
+
+4. Profiling
+- Get into the details of your data.
+- Create a data model and map the fields and tables you need.
+- Consider joins and calculations.
+- Understand any data quality or format issues.
+
+
+5. Start with SELECT
+- Start simple.
+- Any query begins with SELECT statement.
+- Add in special formatting.
+- If using subqueries, start with the innermost query and work outward.
+
+
+6. Test and Troubleshoot
+- Do not wait uintil the end to test queries.
+- Test after each join or filter.
+- Are you getting the results you expect?
+- Start small and go step-by-step when troubleshooting a query.
+
+
+7. Format and Comment
+- Use correct formatting and identation.
+- Comment strategically.
+- Clean code and comments help when you revisit r hand off code.
+
+
+8. Review
+- Always review old queries.
+- Business rules.
+- Date changes.
+- Date indicators.
+- Work the problem fro begginning to end.

@@ -1,0 +1,22 @@
+What Are Subqueries?
+- Queries embedded into other queries.
+- Relational databases store data in multiple tables.
+- Subqueries merge data from ultiple sources together.
+- Helps qith adding other filtering criteria.
+
+Always perdorm the innermost SELECT portion first
+
+SELECT
+CustomerID
+,CompanyName
+,Region
+FROM Customers
+WHERE customerID IN (SELECT
+	customerID
+	FROM Orders
+	WHERE Freight > 100);
+	
+DBMS performing two operations
+1. Getting the order numbers fro the product selected.
+2. Addign that to the WHERE clause and processing the 
+overall SELECT statement.

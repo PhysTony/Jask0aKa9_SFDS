@@ -1,0 +1,6 @@
+CREATE TEMPORY TABLE Sandals AS
+(
+	SELECT *
+	FROM shoes
+	WHERE shoe_type= 'sandals'
+)
