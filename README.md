@@ -1,2 +1,1 @@
-# Jask0aKa9_SFDS
-SQL for Data Science from Coursera
+### SQL_for_Data_Science
